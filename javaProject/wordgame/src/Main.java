@@ -20,18 +20,18 @@ public  class Main {
 
         String stringFromArray = myArray[newRandom.nextInt(myArray.length)];
 
-        Scanner myObj = new Scanner(System.in); // Create a Scanner object
-        System.out.println("Please enter 5 letter word");
+        // Scanner myObj = new Scanner(System.in); // Create a Scanner object
+        // System.out.println("Please enter 5 letter word");
 
-        String inputWord = myObj.nextLine(); // Read user inputds
-        // System.out.println("Username is: " + inputWord); // Output user input
+        // String inputWord = myObj.nextLine(); // Read user inputds
+        // // System.out.println("Username is: " + inputWord); // Output user input
 
-        if(inputWord.length() != 5) {
-            System.out.println("You enter the wrong number of letter");
-            inputWord = myObj.nextLine();
-        } else{
-            System.out.println("Your word is : " + inputWord);
-        }
+        // if(inputWord.length() != 5) {
+        //     System.out.println("You enter the wrong number of letter");
+        //     inputWord = myObj.nextLine();
+        // } else{
+        //     System.out.println("Your word is : " + inputWord);
+        // }
 
 
         // 
@@ -41,7 +41,7 @@ public  class Main {
 
         // System.out.println(StringCompare.findDiffIndexes(stringFromArray, inputWord));
          
-        StringCompare.hasMappingStrings("applE", "epple");
+        StringCompare.hasMappingStrings("apple", "applA");
 
         // use Record
     }

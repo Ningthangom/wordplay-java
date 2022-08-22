@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class StringCompare {
     
@@ -66,15 +67,19 @@ public class StringCompare {
 
     public static void hasMappingStrings (String s1, String s2) {
 
+        // lower casing letter
+        String loweredCaseS1 = s1.toLowerCase();
+        String loweredCaseS2 = s2.toLowerCase();
+
         HashMap<Integer, String> StringOnemap = new HashMap<Integer, String>();
         HashMap<Integer, String> StringTwomap = new HashMap<Integer, String>();
 
-        for (Integer i = 0; i < s1.length(); i++) {
-            StringOnemap.put(i,String.valueOf(s1.charAt(i)));
+        for (Integer i = 0; i < loweredCaseS1.length(); i++) {
+            StringOnemap.put(i,String.valueOf(loweredCaseS1.charAt(i)));
         }
 
-        for (Integer i = 0; i < s2.length(); i++) {
-            StringTwomap.put(i, String.valueOf(s2.charAt(i)));
+        for (Integer i = 0; i < loweredCaseS2.length(); i++) {
+            StringTwomap.put(i, String.valueOf(loweredCaseS2.charAt(i)));
         }
 
         System.out.println("Iterating Hashmap...");
@@ -91,14 +96,29 @@ public class StringCompare {
             System.out.println("Two Strings are the same so you win");
         }else{
             System.out.println("Two Strings are not the same");
-            for(Integer i = 0; i < s1.length(); i++) {
-                if(StringTwomap.containsValue(String.valueOf(s1.charAt(i)))){
-                    System.out.println(s1.charAt(i) + " is included in " + s2);
-                    System.out.println("The key value for " + s1 + " is " + StringTwomap.equals(String.valueOf(s1.charAt(i))));
+            // for(Integer i = 0; i < loweredCaseS1.length(); i++) {
+            //     if(StringTwomap.containsValue(String.valueOf(loweredCaseS1.charAt(i)))){
+            //         System.out.println(loweredCaseS1.charAt(i) + " is included in " + loweredCaseS2);
+            //     }else{
+            //         System.out.println(loweredCaseS1.charAt(i) + " is not included " + loweredCaseS2);
+            //     }
+            // }
+            System.out.println(StringTwomap);
+            for(Integer i = 0; i < loweredCaseS1.length(); i++){
+                // CheckKey.getKeysByValue(StringTwomap, String.valueOf(loweredCaseS1.charAt(i)));
+                // System.out.println(CheckKey.getKeysByValue(StringTwomap, String.valueOf(loweredCaseS1.charAt(i))) + " is the position of " + String.valueOf(loweredCaseS1.charAt(i)) );
+                
+                // System.out.println(CheckKey.getKeysByValue(StringTwomap, String.valueOf(loweredCaseS1.charAt(i))).getClass().getName());
+                 Set<Integer> hash = CheckKey.getKeysByValue(StringTwomap, String.valueOf(loweredCaseS1.charAt(i)));
+                // System.out.println(hash);
+                 if(hash.isEmpty()) {
+                     System.out.println(String.valueOf(loweredCaseS1.charAt(i)) + " is not in the word. ");
+                   
                 }else{
-                    System.out.println(s1.charAt(i) + " is not included " + s2);
+                    System.out.println(String.valueOf(loweredCaseS1.charAt(i)) + " is included in the word. ");
                 }
-            }
+            } 
+
         }
 
     }
