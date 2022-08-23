@@ -2,50 +2,29 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.*;
 
-public  class Main {
-
-
+public class Main {
 
     public static void main(String[] args) {
 
-       
-        String[] myArray = { "abcde", "whate", "12345", "angel" };
+        // String[] myArray = { "abcde", "whate", "12345", "angel" };
+        List<String> myArray = WordList.list;
+        System.out.println(WordList.list);
 
+        Random rand = new Random();
 
-        System.out.println(Arrays.toString(myArray));
+        // System.out.println(myArray[newRandom.nextInt(myArray.length)]);
 
-         Random  newRandom = new Random();
+        String stringFromArray = myArray.get(rand.nextInt(myArray.size()));
+        // System.out.println(stringFromArray);
+        String userInput = UserInput.input();
+        Boolean outcome = StringCompare.hasMappingStrings(userInput, stringFromArray);
 
-        System.out.println(myArray[newRandom.nextInt(myArray.length)]);
-
-        String stringFromArray = myArray[newRandom.nextInt(myArray.length)];
-
-        // Scanner myObj = new Scanner(System.in); // Create a Scanner object
-        // System.out.println("Please enter 5 letter word");
-
-        // String inputWord = myObj.nextLine(); // Read user inputds
-        // // System.out.println("Username is: " + inputWord); // Output user input
-
-        // if(inputWord.length() != 5) {
-        //     System.out.println("You enter the wrong number of letter");
-        //     inputWord = myObj.nextLine();
-        // } else{
-        //     System.out.println("Your word is : " + inputWord);
-        // }
-
-
-        // 
-
-        // System.out.println(StringCompare.stringCompare(stringFromArray, inputWord));
-        // StringCompare.compareString(stringFromArray, inputWord);
-
-        // System.out.println(StringCompare.findDiffIndexes(stringFromArray, inputWord));
-         
-        StringCompare.hasMappingStrings("apple", "applA");
-
+        if (outcome == true) {
+            System.out.println("Congratulations!! You guessed the right word !!!! you win");
+        } else {
+            System.out.println("You lost!! Better luck next time ");
+        }
         // use Record
     }
-
-
 
 }

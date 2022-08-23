@@ -7,6 +7,9 @@ import java.util.Set;
 public class StringCompare {
     
     private static Integer MAX_CHAR = 6;
+    private static Integer limit = 0;
+    String loweredCaseS1;
+    boolean outcome = false;
 
     public static int stringCompare(String str1, String str2) {
 
@@ -65,7 +68,7 @@ public class StringCompare {
     }
 
 
-    public static void hasMappingStrings (String s1, String s2) {
+    public static Boolean hasMappingStrings (String s1, String s2) {
 
         // lower casing letter
         String loweredCaseS1 = s1.toLowerCase();
@@ -82,44 +85,47 @@ public class StringCompare {
             StringTwomap.put(i, String.valueOf(loweredCaseS2.charAt(i)));
         }
 
-        System.out.println("Iterating Hashmap...");
-        for (Map.Entry m : StringOnemap.entrySet()) {
-            System.out.println(m.getKey() + " " + m.getValue());
-        }
+        while (StringOnemap.equals(StringTwomap) == false && limit <= 5){
+            if (StringOnemap.equals(StringTwomap)) {
+                System.out.println("Two Strings are the same so you win");
+                return true;
+            } else {
+                System.out.println("Two Words are not the same");
 
-        System.out.println("Iterating Hashmap 2...");
-        for (Map.Entry m : StringTwomap.entrySet()) {
-            System.out.println(m.getKey() + " " + m.getValue());
-        }
+                // System.out.println(StringTwomap);
+                if(limit <= 4) {
+                    for (Integer i = 0; i < loweredCaseS1.length(); i++) {
+                        
+                        Set<Integer> hash = CheckKey.getKeysByValue(StringTwomap,
+                                String.valueOf(loweredCaseS1.charAt(i)));
+                        // System.out.println(hash);
+                        if (hash.isEmpty()) {
+                            System.out.println(String.valueOf(loweredCaseS1.charAt(i)) + " is not in the word.");
 
-        if(StringOnemap.equals(StringTwomap)){
-            System.out.println("Two Strings are the same so you win");
-        }else{
-            System.out.println("Two Strings are not the same");
-            // for(Integer i = 0; i < loweredCaseS1.length(); i++) {
-            //     if(StringTwomap.containsValue(String.valueOf(loweredCaseS1.charAt(i)))){
-            //         System.out.println(loweredCaseS1.charAt(i) + " is included in " + loweredCaseS2);
-            //     }else{
-            //         System.out.println(loweredCaseS1.charAt(i) + " is not included " + loweredCaseS2);
-            //     }
-            // }
-            System.out.println(StringTwomap);
-            for(Integer i = 0; i < loweredCaseS1.length(); i++){
-                // CheckKey.getKeysByValue(StringTwomap, String.valueOf(loweredCaseS1.charAt(i)));
-                // System.out.println(CheckKey.getKeysByValue(StringTwomap, String.valueOf(loweredCaseS1.charAt(i))) + " is the position of " + String.valueOf(loweredCaseS1.charAt(i)) );
-                
-                // System.out.println(CheckKey.getKeysByValue(StringTwomap, String.valueOf(loweredCaseS1.charAt(i))).getClass().getName());
-                 Set<Integer> hash = CheckKey.getKeysByValue(StringTwomap, String.valueOf(loweredCaseS1.charAt(i)));
-                // System.out.println(hash);
-                 if(hash.isEmpty()) {
-                     System.out.println(String.valueOf(loweredCaseS1.charAt(i)) + " is not in the word. ");
-                   
-                }else{
-                    System.out.println(String.valueOf(loweredCaseS1.charAt(i)) + " is included in the word. ");
+                        } else {
+                            System.out.println(String.valueOf(loweredCaseS1.charAt(i)) + " is included in the word. ");
+                            
+
+                        }
+
+                    }
+                    loweredCaseS1 = UserInput.input().toLowerCase();
+                    ++limit;
+                    System.out.println("this is limit " + limit);
+                    System.out.println(loweredCaseS1);
+
+                    for (Integer i = 0; i < loweredCaseS1.length(); i++) {
+                        StringOnemap.put(i, String.valueOf(loweredCaseS1.charAt(i)));
+                    }
+
                 }
-            } 
 
+               
+
+            }
         }
+        
+        return StringOnemap.equals(StringTwomap);
 
     }
 
