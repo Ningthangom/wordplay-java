@@ -2,13 +2,14 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.*;
 
+
 public class Main {
 
     public static void main(String[] args) {
 
         // String[] myArray = { "abcde", "whate", "12345", "angel" };
         List<String> myArray = WordList.list;
-        System.out.println(WordList.list);
+        // System.out.println(WordList.list);
 
         Random rand = new Random();
 
@@ -26,5 +27,4 @@ public class Main {
         }
         // use Record
     }
-
 }

@@ -92,18 +92,18 @@ public class StringCompare {
             } else {
                 System.out.println("Two Words are not the same");
 
-                // System.out.println(StringTwomap);
+                //  System.out.println(StringTwomap);
                 if(limit <= 4) {
                     for (Integer i = 0; i < loweredCaseS1.length(); i++) {
                         
                         Set<Integer> hash = CheckKey.getKeysByValue(StringTwomap,
                                 String.valueOf(loweredCaseS1.charAt(i)));
-                        // System.out.println(hash);
+                        //  System.out.println(hash);
                         if (hash.isEmpty()) {
                             System.out.println(String.valueOf(loweredCaseS1.charAt(i)) + " is not in the word.");
 
                         } else {
-                            System.out.println(String.valueOf(loweredCaseS1.charAt(i)) + " is included in the word. ");
+                            System.out.println(String.valueOf(loweredCaseS1.charAt(i)) + " is included in the word. and is located at " + (i+1));
                             
 
                         }
@@ -111,13 +111,16 @@ public class StringCompare {
                     }
                     loweredCaseS1 = UserInput.input().toLowerCase();
                     ++limit;
-                    System.out.println("this is limit " + limit);
+                    System.out.println("This is limit " + limit);
                     System.out.println(loweredCaseS1);
 
                     for (Integer i = 0; i < loweredCaseS1.length(); i++) {
                         StringOnemap.put(i, String.valueOf(loweredCaseS1.charAt(i)));
                     }
 
+                }else {
+                    System.out.println("You have reached the limit");
+                    return false;
                 }
 
                
